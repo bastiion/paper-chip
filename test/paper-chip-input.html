@@ -7,10 +7,10 @@
 
 	<title>paper-chip-input test</title>
 
-	<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-	<script src="../../web-component-tester/browser.js"></script>
+	<script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+	<script src="../../../wct-browser-legacy/browser.js"></script>
 
-	<link rel="import" href="../paper-chip-input.html">
+	<script type="module" src="../paper-chip-input.js"></script>
 </head>
 
 <body>
@@ -33,42 +33,44 @@
 		</template>
 	</test-fixture>
 
-	<script>
+	<script type="module">
+		import PaperChipInput from '../paper-chip-input.js';
+		
 		suite('paper-chip-input', function () {
 
 			test('instantiating the element works', function () {
-				assert.equal(PaperChipInput.is, 'paper-chip-input');
+						assert.equal(PaperChipInput.is, 'paper-chip-input');
 			});
 
 			test('label is displayed', function () {
-				document.addEventListener('WebComponentsReady', function () {
+						document.addEventListener('WebComponentsReady', function () {
 					const element = fixture('label');
 
 					assert.equal(element.label, 'test');
-				});
+						});
 			});
 
 			test('closable items are displayed', function (done) {
 
-				var element = fixture('closable items');
-				var paperChips = [
+						var element = fixture('closable items');
+						var paperChips = [
 					'One',
 					'Two',
 					'Three'
-				];
+						];
 
-				element.items = paperChips;
+						element.items = paperChips;
 
-				flush(function () {
+						flush(function () {
 					assert.equal(element.shadowRoot.querySelector('#slot2').querySelectorAll('paper-chip').length, paperChips.length);
 					done();
-				});
+						});
 
-				assert.equal(element.label, 'test');
+						assert.equal(element.label, 'test');
 			});
 
 		});
-	</script>ti
+	</script>
 </body>
 
 </html>

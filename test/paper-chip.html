@@ -7,10 +7,10 @@
 
 	<title>paper-chip test</title>
 
-	<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-	<script src="../../web-component-tester/browser.js"></script>
+	<script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+	<script src="../../../wct-browser-legacy/browser.js"></script>
 
-	<link rel="import" href="../paper-chip.html">
+	<script type="module" src="../paper-chip.js"></script>
 </head>
 
 <body>
@@ -53,48 +53,48 @@
 		</template>
 	</test-fixture>
 
-	<script>
+	<script type="module">
+		import PaperChip from '../paper-chip.js';
 
 		suite('paper-chip', function () {
 
 			test('instantiating the element works', function () {
-				assert.equal(PaperChip.is, 'paper-chip');
+						assert.equal(PaperChip.is, 'paper-chip');
 			});
 
 			test('text avatar is displayed', function () {
-				const element = fixture('textAvatar');
+						const element = fixture('textAvatar');
 
-				assert.equal(element.querySelector('#slotTextAvatar > span').textContent, 'T');
-				assert.equal(element.querySelector('#slotTextAvatar').slot, 'avatar');
-				assert.equal(PaperChip.is, 'paper-chip');
+						assert.equal(element.querySelector('#slotTextAvatar > span').textContent, 'T');
+						assert.equal(element.querySelector('#slotTextAvatar').slot, 'avatar');
+						assert.equal(PaperChip.is, 'paper-chip');
 			});
 
 			test('icon avatar is displayed', function () {
-				const element = fixture('iconAvatar');
+						const element = fixture('iconAvatar');
 
-				assert.equal(element.querySelector('#slotIconAvatar > iron-icon').icon, 'icons:favorite');
-				assert.equal(element.querySelector('#slotIconAvatar').slot, 'avatar');
-				assert.equal(PaperChip.is, 'paper-chip');
+						assert.equal(element.querySelector('#slotIconAvatar > iron-icon').icon, 'icons:favorite');
+						assert.equal(element.querySelector('#slotIconAvatar').slot, 'avatar');
+						assert.equal(PaperChip.is, 'paper-chip');
 			});
 
 			test('label is displayed', function () {
-				document.addEventListener('WebComponentsReady', function () {
+						document.addEventListener('WebComponentsReady', function () {
 					const element = fixture('label');
 
 					assert.equal(element.label, 'test');
-				});
+						});
 			});
 
 			test('label and close icon is displayed', function () {
-				const element = fixture('labelAndClosable');
+						const element = fixture('labelAndClosable');
 
-				assert.isNotNull(element.shadowRoot.querySelectorAll('iron-icon'));
-				assert.equal(element.label, 'test');
-				assert.equal(element.closable, true);
+						assert.isNotNull(element.shadowRoot.querySelectorAll('iron-icon'));
+						assert.equal(element.label, 'test');
+						assert.equal(element.closable, true);
 			});
 
 		});
-
 	</script>
 </body>
 

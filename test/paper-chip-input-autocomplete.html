@@ -7,10 +7,10 @@
 
     <title>paper-chip-input-autocomplete test</title>
 
-    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../wct-browser-legacy/browser.js"></script>
 
-    <link rel="import" href="../paper-chip-input-autocomplete.html">
+    <script type="module" src="../paper-chip-input-autocomplete.js"></script>
 </head>
 
 <body>
@@ -27,7 +27,8 @@
         </template>
     </test-fixture>
 
-    <script>
+    <script type="module">
+        import PaperChipInputAutocomplete from '../paper-chip-input-autocomplete.js';
         suite('paper-chip-input-autocomplete', function () {
 
             test('instantiating the element works', function () {
@@ -35,11 +36,11 @@
             });
 
             test('label is displayed', function () {
-				document.addEventListener('WebComponentsReady', function(){
-					const element = fixture('label');
-		
-					assert.equal(element.label, 'test');
-				});
+                        document.addEventListener('WebComponentsReady', function(){
+                    const element = fixture('label');
+
+                    assert.equal(element.label, 'test');
+                        });
             });
 
         });
