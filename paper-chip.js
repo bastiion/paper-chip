@@ -13,6 +13,7 @@ Custom property | Description | Default
 `--paper-chip-label-color` | The paper-chip label-color | `rgba(0, 0, 0, 0.6)`
 `--paper-chip-active-background-color` | The paper-chip active background-color | `#d6d6d6`
 `--paper-chip-background-color` | The paper-chip background-color | `#e4e4e4`
+ `--paper-chip-selected-background-color` | The paper-chip background-color | `#535353`
 `--paper-chip-avatar-background-color` | The paper-chip avatar background-color | `#757575`
 `--paper-chip-avatar-font-color` | The paper-chip avatar font and icon color | `#ffffff`
 `--paper-chip-close-color` | The paper-chip close icon color | `#a6a6a6`
@@ -23,11 +24,6 @@ Custom property | Description | Default
 
 @element paper-chip
 @demo demo/index.html
-*/
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
 */
 import '../polymer/polymer-legacy.js';
 
@@ -51,6 +47,12 @@ class PaperChip extends PolymerElement {
                 type: String,
                 value: 'Default Label'
             },
+            selected: {
+               type: Boolean,
+               value: false,
+               notify: true,
+              reflectToAttribute: true
+            },
 
             /**
             * If true, the paper-chips can be closed.
@@ -66,6 +68,11 @@ class PaperChip extends PolymerElement {
             noHover: {
                 type: Boolean,
                 value: false
+            },
+            noAutoDomRemoval: {
+               type: Boolean,
+               value: false,
+               notify: true
             }
 				};
     }
@@ -73,6 +80,11 @@ class PaperChip extends PolymerElement {
     static get template() {
         return html`
         <style>
+        
+            [selected] .chip {
+                background-color: var(--paper-chip-selected-background-color, #535353);
+            }
+            
             .chip {
                 font-family: var(--paper-chip-font-family, "Roboto", sans-serif);
                 display: inline-block;
@@ -179,7 +191,7 @@ class PaperChip extends PolymerElement {
             composed: true,
             bubbles: true
 				}));
-				if (this.parentNode.id != 'slot2' && this.parentNode.querySelector("dom-repeat") === null) {
+				if (!this.noAutoDomRemoval && this.parentNode.id != 'slot2' && this.parentNode.querySelector("dom-repeat") === null) {
             this.parentNode.removeChild(this);
 				}
     }
