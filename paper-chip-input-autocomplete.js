@@ -27,17 +27,17 @@ Custom property | Description | Default
   from HTML and may be out of place here. Review them and
   then delete this comment!
 */
-import '../polymer/polymer-legacy.js';
+import '@polymer/polymer/polymer-legacy.js';
 
-import '../iron-a11y-keys/iron-a11y-keys.js';
-import '../paper-input/paper-input.js';
-import '../paper-item/paper-item.js';
-import '../paper-listbox/paper-listbox.js';
-import '../paper-material/paper-material.js';
-import '../paper-ripple/paper-ripple.js';
-import '../paper-styles/default-theme.js';
+import '@polymer/iron-a11y-keys/iron-a11y-keys.js';
+import '@polymer/paper-input/paper-input.js';
+import '@polymer/paper-item/paper-item.js';
+import '@polymer/paper-listbox/paper-listbox.js';
+import '@polymer/paper-material/paper-material.js';
+import '@polymer/paper-ripple/paper-ripple.js';
+import '@polymer/paper-styles/default-theme.js';
 import './paper-chip-input.js';
-import { PolymerElement, html } from '../polymer/polymer-element.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class PaperChipInputAutocomplete extends PolymerElement {
 

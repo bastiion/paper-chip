@@ -23,14 +23,14 @@ Custom property | Description | Default
   from HTML and may be out of place here. Review them and
   then delete this comment!
 */
-import '../polymer/polymer-legacy.js';
+import '@polymer/polymer/polymer-legacy.js';
 
-import '../iron-a11y-keys/iron-a11y-keys.js';
-import '../iron-icons/iron-icons.js';
-import '../paper-input/paper-input.js';
-import '../paper-styles/default-theme.js';
+import '@polymer/iron-a11y-keys/iron-a11y-keys.js';
+import '@polymer/iron-icons/iron-icons.js';
+import '@polymer/paper-input/paper-input.js';
+import '@polymer/paper-styles/default-theme.js';
 import './paper-chip.js';
-import { PolymerElement, html } from '../polymer/polymer-element.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class PaperChipInput extends PolymerElement {
 

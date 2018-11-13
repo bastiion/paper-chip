@@ -25,11 +25,11 @@ Custom property | Description | Default
 @element paper-chip
 @demo demo/index.html
 */
-import '../polymer/polymer-legacy.js';
+import '@polymer/polymer/polymer-legacy.js';
 
-import '../paper-styles/paper-styles.js';
-import '../iron-icons/iron-icons.js';
-import { PolymerElement, html } from '../polymer/polymer-element.js';
+import '@polymer/paper-styles/paper-styles.js';
+import '@polymer/iron-icons/iron-icons.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class PaperChip extends PolymerElement {
 
@@ -81,10 +81,7 @@ class PaperChip extends PolymerElement {
         return html`
         <style>
         
-            [selected] .chip {
-                background-color: var(--paper-chip-selected-background-color, #535353);
-            }
-            
+        
             .chip {
                 font-family: var(--paper-chip-font-family, "Roboto", sans-serif);
                 display: inline-block;
@@ -100,8 +97,8 @@ class PaperChip extends PolymerElement {
                 margin-right: 5px;
                 @apply --paper-chip;
             }
-            .chip:active {
-                background: var(--paper-chip-active-background-color, #D6D6D6);
+            .chip.selected {
+                background: var(--paper-chip-active-background-color, #464666);
             }
             .chip .closeIcon {
                 margin-left: 4px;
@@ -166,21 +163,24 @@ class PaperChip extends PolymerElement {
             }
         </style>
 
-        <div class$="[[_computePaperChipClass(noHover)]]">
+        <div class\$="[[_computePaperChipClass(noHover, selected)]]">
             <span class="label">[[label]]</span>
             <span class="avatar"><slot name="avatar"></slot></span>
-            <div hidden$="[[!closable]]" class="closeIcon" on-click="_remove">
+            <div hidden\$="[[!closable]]" class="closeIcon" on-click="_remove">
                 <iron-icon class="close" icon="icons:clear"></iron-icon>
             </div>
         </div>`
     }
 
-    _computePaperChipClass(noHover) {
-				if (noHover == true) {
-            return 'chip unselectable';
-				} else {
-            return 'chip unselectable hoverEffect';
+    _computePaperChipClass(noHover, selected) {
+      let classes = 'chip unselectable ';
+				if (!noHover) {
+             classes += ' hoverEffect ';
 				}
+				if(selected) {
+				  classes += ' selected '
+        }
+        return classes;
     }
 
     _remove(event) {
