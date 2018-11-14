@@ -47,12 +47,6 @@ class PaperChip extends PolymerElement {
                 type: String,
                 value: 'Default Label'
             },
-            selected: {
-               type: Boolean,
-               value: false,
-               notify: true,
-              reflectToAttribute: true
-            },
 
             /**
             * If true, the paper-chips can be closed.
@@ -96,9 +90,6 @@ class PaperChip extends PolymerElement {
                 margin-bottom: 5px;
                 margin-right: 5px;
                 @apply --paper-chip;
-            }
-            .chip.selected {
-                background: var(--paper-chip-active-background-color, #464666);
             }
             .chip .closeIcon {
                 margin-left: 4px;
@@ -164,8 +155,8 @@ class PaperChip extends PolymerElement {
         </style>
 
         <div class\$="[[_computePaperChipClass(noHover, selected)]]">
-            <span class="label">[[label]]</span>
             <span class="avatar"><slot name="avatar"></slot></span>
+            <span class="label">[[label]]</span>
             <div hidden\$="[[!closable]]" class="closeIcon" on-click="_remove">
                 <iron-icon class="close" icon="icons:clear"></iron-icon>
             </div>
