@@ -47,6 +47,11 @@ class PaperChip extends PolymerElement {
                 type: String,
                 value: 'Default Label'
             },
+            noAvatar: {
+                type: Boolean,
+                notify: true,
+                reflectToAttribute: true
+            },
 
             /**
             * If true, the paper-chips can be closed.
@@ -127,6 +132,12 @@ class PaperChip extends PolymerElement {
             }
             .label {
                 margin-right: 12px;
+            }
+            :host([no-avatar]) .avatar {
+              display: none;
+            }
+            :host(.no-avatar) .avatar {
+              display: none;
             }
             .avatar ::slotted(.chip-image) {
                 float: left;
